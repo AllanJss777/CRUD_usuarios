@@ -3,23 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Users() {
-  const [users, setUsers] = useState([
-    // {
-    //   nome: "Gustavo",
-    //   email: "gustavo@uol.com",
-    //   idade: 32,
-    // },
-    // {
-    //   nome: "fabio",
-    //   email: "fabio@uol.com",
-    //   idade: 20,
-    // },
-    // {
-    //   nome: "simone",
-    //   email: "simone@uol.com",
-    //   idade: 44,
-    // },
-  ]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     axios
