@@ -28,6 +28,20 @@ app.post("/createUser", (req, res) => {
     .catch((err) => res.json(err));
 });
 
+app.put("/updateUser/:id", (req, res) => {
+  const id = req.params.id;
+  UserModel.findByIdAndUpdate(
+    { _id: id },
+    {
+      nome: req.body.nome,
+      email: req.body.email,
+      idade: req.body.idade,
+    }
+  )
+    .then((users) => res.json(users))
+    .catch((err) => res.json(err));
+});
+
 app.delete("/deleteUser/:id", (req, res) => {
   const id = req.params.id;
   UserModel.findByIdAndDelete({ _id: id })
