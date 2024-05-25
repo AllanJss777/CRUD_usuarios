@@ -13,13 +13,19 @@ function Users() {
   }, []);
 
   const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:3001/deleteUser/" + id)
-      .then((result) => {
-        console.log(result);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+    const confirmed = window.confirm(
+      "Tem certeza que deseja deletar este usuário?"
+    );
+    if (confirmed) {
+      axios
+        .delete("http://localhost:3001/deleteUser/" + id)
+        .then((result) => {
+          console.log(result);
+          // Atualiza a lista de usuários sem precisar recarregar a página
+          setUsers(users.filter((user) => user._id !== id));
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
